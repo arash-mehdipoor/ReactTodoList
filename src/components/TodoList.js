@@ -1,21 +1,21 @@
 import React from 'react'
+import Footer from './Footer'
+import Header from './Header'
+import TodoItem from './TodoItem'
 
 const TodoList = ({ title, items }) => {
+    const count = items.length;
     return (
         <div className="todolist">
-            <h1>{title.toUpperCase()}</h1>
+            <Header title={title} />
             <ul className="list-unstyled">
                 {
                     items.map(item =>
-                        <li className="ui-state-default" key={item.id}>
-                            <div className="checkbox">
-                                <label>
-                                    <input type="checkbox" value="" />{item.text}</label>
-                            </div>
-                        </li>
+                        <TodoItem data={item} />
                     )
                 }
             </ul>
+            <Footer count={count} />
         </div>
     )
 }
